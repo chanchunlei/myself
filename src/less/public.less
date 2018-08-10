@@ -6,3 +6,15 @@
   width: 1100px;
   margin: 0 auto;
 }
+.font-size(){
+  font-size: 12px;
+  letter-spacing: 1px;
+}
+.indent(@length:2em,@line:2){ //缩进,和行数
+  text-indent: @length;
+  overflow : hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: @line;
+  -webkit-box-orient: vertical;
+}

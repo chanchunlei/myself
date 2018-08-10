@@ -4,14 +4,17 @@
         <ul class="nav">
           <li class="size">首页</li>
           <li>coding</li>
-          <li>学无止境</li>
-          <li>好文</li>
+          <li>道阻且长</li>
+          <li>受想行识</li>
           <li>时间轴</li>
           <li>关于我</li>
         </ul>
         <div class="search">
-          <span class="inp_box"><input type="text"></span>
-          <span class="btn" @click="btn()"><i class="iconfont">&#xe637;</i></span>
+          <span class="animated inp_box" :class="className">
+            <input class="inp" type="text" placeholder="搜索是个好东西">
+            <input class="btn_s" type="button" value="搜索">
+          </span>
+          <span class="btn"><i @click="btn()" v-if="!isShow" class="iconfont">&#xe637;</i><i @click="close()" v-if="isShow" class="iconfont">&#xe690;</i></span>
         </div>
       </div>
   </div>
@@ -20,10 +23,11 @@
 <script>
   import api from '../api/api.js'
 export default {
-
+  name: "Top",
   data () {
     return {
-      msg: 'Welcome to Your Vue.js App'
+      isShow: false,
+      className: "isHide",
     }
   },
   created:function(){
@@ -37,8 +41,13 @@ export default {
     })
   },
   methods:{
-   btn:function(){
-     console.log(111)
+   btn: function() {
+     this.className = "zoomIn";
+     this.isShow = !this.isShow;
+   },
+   close: function() {
+     this.className = "isHide";
+     this.isShow = !this.isShow;
    }
   }
 }
@@ -67,10 +76,10 @@ export default {
     display: flex;
     justify-content: flex-start;
     .height();
-  }
-  .nav>li{
-    margin: 0 15px;
-    cursor: pointer;
+    li{
+      margin: 0 15px;
+      cursor: pointer;
+    }
   }
   .search{
     position: absolute;
@@ -80,16 +89,39 @@ export default {
     text-align: right;
     .height();
   }
-  .inp_box>input{
-    width: 85%;
+  .inp_box{
+    position: relative;
+  }
+  .inp{
+    width: 90%;
+    padding-right: 60px;
+    box-sizing: border-box;
     border: 1px solid #999;
     line-height: 25px;
     border-radius: 5px;
+    padding-left: 5px;
+    font-size: 14px;
+    color: #666;
+  }
+  .btn_s{
+    width: 60px;
+    position: absolute;
+    top: 0;
+    right: 6px;
+    border: none;
+    background-color: #333;
+    color: #fff;
+    line-height: 25px;
+    border-radius: 3px;
+    .font-size()
+  }
+  .isHide{
+    display: none;
   }
   .btn{
     cursor: pointer;
-  }
-  .btn>i{
-    font-size: 18px;
+    i{
+      font-size: 18px;
+    }
   }
 </style>

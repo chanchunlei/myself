@@ -1,9 +1,8 @@
 
 import animate from 'animate.css' //使用动画
-
 import Vue from 'vue'
 import App from './App'
-import router from './router/router'
+import router from './router/router'//路由
 import Vuex from 'vuex'
 
 Vue.config.productionTip = false

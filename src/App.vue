@@ -17,11 +17,11 @@ export default {
 
   @font-face {
     font-family: 'iconfont';  /* project id 783661 */
-    src: url('//at.alicdn.com/t/font_783661_ykiagdwk78l.eot');
-    src: url('//at.alicdn.com/t/font_783661_ykiagdwk78l.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_783661_ykiagdwk78l.woff') format('woff'),
-    url('//at.alicdn.com/t/font_783661_ykiagdwk78l.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_783661_ykiagdwk78l.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_783661_bgnbmron47b.eot');
+    src: url('//at.alicdn.com/t/font_783661_bgnbmron47b.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_783661_bgnbmron47b.woff') format('woff'),
+    url('//at.alicdn.com/t/font_783661_bgnbmron47b.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_783661_bgnbmron47b.svg#iconfont') format('svg');
   }
   .iconfont{
     font-family:"iconfont" !important;
