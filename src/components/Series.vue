@@ -11,104 +11,16 @@
         </div>
       </div>
       <ul class="list">
-          <vue-lazy-component tagName="li" @after-enter="init(0)" :class='[idx==0 ? className : ""]'>
+          <vue-lazy-component tagName="li" v-for="(item,index) in list" :class='item.className' @after-enter="init(index)" v-bind:key="index">
             <div class="title_cover">
-              <img src="../../static/imgs/kong.jpg" alt="封面">
-              <p>coding</p>
-              <div class="synopsis"><span>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</span></div>
+              <img :src="item.pic">
+              <p>{{item.title}}</p>
+              <div class="synopsis">
+                <span>{{item.synopsis}}</span>
+                <div class="read_all">阅读全文>></div>
+              </div>
             </div>
-            <div class="cover"><p>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</p></div>
-            <time>
-              <span>2018</span>
-              <span>July</span>
-              <span>18</span>
-            </time>
-          </vue-lazy-component>
-          <vue-lazy-component tagName="li" @after-enter="init(1)" :class='[idx==1 ? className : ""]'>
-            <div class="title_cover">
-              <img src="../../static/imgs/kong.jpg" alt="封面">
-              <p>道阻且长</p>
-              <div class="synopsis"><span>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</span></div>
-            </div>
-            <div class="cover"><p>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</p></div>
-            <time>
-              <span>2018</span>
-              <span>July</span>
-              <span>18</span>
-            </time>
-          </vue-lazy-component>
-          <vue-lazy-component tagName="li" @after-enter="init(2)" :class='[idx==2 ? className : ""]'>
-            <div class="title_cover">
-              <img src="../../static/imgs/kong.jpg" alt="封面">
-              <p>受想行识</p>
-              <div class="synopsis"><span>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</span></div>
-            </div>
-            <div class="cover"><p>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</p></div>
-            <time>
-              <span>2018</span>
-              <span>July</span>
-              <span>18</span>
-            </time>
-          </vue-lazy-component>
-          <vue-lazy-component tagName="li" @after-enter="init(3)" :class='[idx==3 ? className : ""]'>
-            <div class="title_cover">
-              <img src="../../static/imgs/kong.jpg" alt="封面">
-              <p>受想行识</p>
-              <div class="synopsis"><span>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</span></div>
-            </div>
-            <div class="cover"><p>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这</p></div>
-            <time>
-              <span>2018</span>
-              <span>July</span>
-              <span>18</span>
-            </time>
-          </vue-lazy-component>
-          <vue-lazy-component tagName="li" @after-enter="init(4)" :class='[idx==4 ? className : ""]'>
-            <div class="title_cover">
-              <img src="../../static/imgs/kong.jpg" alt="封面">
-              <p>受想行识</p>
-              <div class="synopsis"><span>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</span></div>
-            </div>
-            <div class="cover"><p>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</p></div>
-            <time>
-              <span>2018</span>
-              <span>July</span>
-              <span>18</span>
-            </time>
-          </vue-lazy-component>
-          <vue-lazy-component tagName="li" @after-enter="init(5)" :class='[idx==5 ? className : ""]'>
-            <div class="title_cover">
-              <img src="../../static/imgs/kong.jpg" alt="封面">
-              <p>受想行识</p>
-              <div class="synopsis"><span>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</span></div>
-            </div>
-            <div class="cover"><p>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这</p></div>
-            <time>
-              <span>2018</span>
-              <span>July</span>
-              <span>18</span>
-            </time>
-          </vue-lazy-component>
-          <vue-lazy-component @after-enter="init(6)" :class='[idx==6? className : ""]' tagName="li">
-            <div class="title_cover">
-              <img src="../../static/imgs/kong.jpg" alt="封面">
-              <p>受想行识</p>
-              <div class="synopsis"><span>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</span></div>
-            </div>
-            <div class="cover"><p>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</p></div>
-            <time>
-              <span>2018</span>
-              <span>July</span>
-              <span>18</span>
-            </time>
-          </vue-lazy-component>
-          <vue-lazy-component tagName="li" @after-enter="init(7)" :class='[idx==7 ? className : ""]'>
-            <div class="title_cover">
-              <img src="../../static/imgs/kong.jpg" alt="封面">
-              <p>受想行识</p>
-              <div class="synopsis"><span>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</span></div>
-            </div>
-            <div class="cover"><p>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这</p></div>
+            <div class="cover"><p>{{item.cover}}</p></div>
             <time>
               <span>2018</span>
               <span>July</span>
@@ -126,22 +38,25 @@
           return{
             className: 'animated zoomIn',
             list: [
-              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "受想行识",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:"animated zoomIn"},
-              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "codding",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:"animated zoomIn"},
-              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "受想行识",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:"animated zoomIn"},
-              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "道阻且长",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:"animated zoomIn"},
-              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "受想行识",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:"animated zoomIn"},
-              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "codding",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:"animated zoomIn"},
-              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "受想行识",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:"animated zoomIn"},
-              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "codding",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:"animated zoomIn"},
+              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "受想行识",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:""},
+              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "codding",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:""},
+              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "受想行识",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:""},
+              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "道阻且长",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:""},
+              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "受想行识",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:""},
+              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "codding",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:""},
+              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "受想行识",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:""},
+              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "codding",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:""},
+              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "codding",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:""},
+              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "codding",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:""},
+              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "codding",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:""},
+              { pic:"../../static/imgs/kong.jpg",synopsis:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147", title: "codding",cover:"坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意", className:""},
             ],
             idx: 0
           }
       },
       methods:{
-        init: function(idx){
-          console.log(idx);
-          this.idx = idx;
+        init: function(index){
+          this.list[index].className = "animated fadeInUp";
         }
       }
     }
@@ -171,6 +86,7 @@
   }
   .seriesBox{
     .content();
+    margin-bottom: 260px;
     position: relative;
   }
   .path{
@@ -222,6 +138,7 @@
       background-color: #fff;
       box-sizing: border-box;
       position: relative;
+      margin-top: 120px;
       .cover{
         padding: 20px;
         box-sizing: border-box;
@@ -247,7 +164,6 @@
     }
     li:nth-child(n){
       float: left;
-      margin-top: 120px;
       border-right: 1px solid #ececec;
       border-radius: 5px 0 0 5px;
       time{
@@ -260,7 +176,6 @@
     }
     li:nth-child(2n){
       float: right;
-      margin-top: 170px;
       border-left: 1px solid #ececec;
       border-radius: 0 5px 5px 0;
       time{
@@ -268,6 +183,9 @@
         text-align: right;
         padding-right: 10px;
       }
+    }
+    li:nth-child(2){//右边要比左边低120px
+      margin-top: 240px;
     }
   }
   .title_cover{
@@ -302,6 +220,13 @@
       font-size: 16px;
       span{
         .indent(2em,10);
+      }
+      .read_all{
+        color: #009966;
+        position: absolute;
+        bottom: 10px;
+        right: 5px;
+        font-size: 14px;
       }
     }
   }

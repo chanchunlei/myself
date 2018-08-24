@@ -17,5 +17,6 @@ export default new Router({
       component: resolve =>require(['../views/index.vue'],resolve),
       meta: {title: '首页'}
     }
+
   ]
 })
