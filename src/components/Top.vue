@@ -2,10 +2,10 @@
   <div class="Top">
       <div class="top_box">
         <ul class="nav">
-          <li class="size">首页</li>
-          <li>coding</li>
-          <li>道阻且长</li>
-          <li>受想行识</li>
+          <li><router-link class="size" to="/Home">首页</router-link></li>
+          <li><router-link to="/Codding">coding</router-link></li>
+          <li><router-link to="/Longway">道阻且长</router-link></li>
+          <li><router-link to="/Thinking">受想行识</router-link></li>
           <li>时间轴</li>
           <li>关于我</li>
         </ul>
@@ -68,10 +68,7 @@ export default {
     height: 80px;
     line-height: 80px;
   }
-  .size{
-    font-size: 20px;
-    color: #999;
-  }
+
   .nav{
     display: flex;
     justify-content: flex-start;
@@ -79,6 +76,10 @@ export default {
     li{
       margin: 0 15px;
       cursor: pointer;
+      .size{
+        font-size: 20px;
+        color: #999;
+      }
     }
   }
   .search{

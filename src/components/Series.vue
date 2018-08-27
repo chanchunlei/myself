@@ -1,37 +1,41 @@
 <template>
-    <div class="seriesBox">
-      <div class="path">
-        <div class="begin">
-          <a href="javascript:;"><i class="iconfont">&#xe62f;</i></a>
+    <div>
+      <v-Middle></v-Middle>
+      <div class="seriesBox">
+        <div class="path">
+          <div class="begin">
+            <a href="javascript:;"><i class="iconfont">&#xe62f;</i></a>
+          </div>
+          <div class="cutLine"></div>
+          <div class="close">
+            <a href="javascript:;"><i class="iconfont">&#xe693;</i></a>
+            <a class="loadMore" href="javascript:;">load more!</a>
+          </div>
         </div>
-        <div class="cutLine"></div>
-        <div class="close">
-          <a href="javascript:;"><i class="iconfont">&#xe693;</i></a>
-          <a v-if="false" href="javascript:;"><i class="iconfont">&#xe62f;</i></a>
-        </div>
-      </div>
-      <ul class="list">
-          <vue-lazy-component tagName="li" v-for="(item,index) in list" :class='item.className' @after-enter="init(index)" v-bind:key="index">
-            <div class="title_cover">
-              <img :src="item.pic">
-              <p>{{item.title}}</p>
-              <div class="synopsis">
-                <span>{{item.synopsis}}</span>
-                <div class="read_all">阅读全文>></div>
+        <ul class="list">
+            <vue-lazy-component tagName="li" v-for="(item,index) in list" :class='item.className' @after-enter="init(index)" v-bind:key="index">
+              <div class="title_cover">
+                <img :src="item.pic">
+                <p>{{item.title}}</p>
+                <div class="synopsis">
+                  <span>{{item.synopsis}}</span>
+                  <div class="read_all">阅读全文>></div>
+                </div>
               </div>
-            </div>
-            <div class="cover"><p>{{item.cover}}</p></div>
-            <time>
-              <span>2018</span>
-              <span>July</span>
-              <span>18</span>
-            </time>
-          </vue-lazy-component>
-      </ul>
+              <div class="cover"><p>{{item.cover}}</p></div>
+              <time>
+                <span>2018</span>
+                <span>July</span>
+                <span>18</span>
+              </time>
+            </vue-lazy-component>
+        </ul>
+      </div>
     </div>
 </template>
 
 <script>
+  import vMiddle from '../components/Middle'
     export default {
         name: "Series",
       data(){
@@ -54,9 +58,12 @@
             idx: 0
           }
       },
+      components:{
+        "v-Middle": vMiddle
+      },
       methods:{
         init: function(index){
-          this.list[index].className = "animated fadeInUp";
+          this.list[index].className = "animated zoomIn";
         }
       }
     }
@@ -77,7 +84,7 @@
       text-align: center;
       line-height: 120px;
       position: absolute;
-      top: 0;
+      bottom: 0;
       left: 0;
       i{
         font-size: 24px;
@@ -104,8 +111,20 @@
   }
   .close{
     .homologous();
+    width: 200px;
+    height: 240px;
     bottom: -242px;
-    left: 0;
+    left: calc(50% - 100px);
+    .loadMore{
+      top: 0;
+      background-color: #fff;
+      z-index: 20;
+      border-top:1px solid #ececec;
+      border-bottom: 1px solid #ececec;
+      &:hover{
+        opacity: 0.6;
+      }
+    }
   }
   .cutLine{
     width: 200px;

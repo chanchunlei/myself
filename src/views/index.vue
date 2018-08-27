@@ -1,16 +1,19 @@
 <template>
    <div id="Home">
      <v-Top></v-Top>
-     <v-Middle></v-Middle>
-     <v-Series></v-Series>
+     <div class="bodyBox">
+         <transition name="change" mode="out-in">
+           <keep-alive>
+             <router-view></router-view>
+           </keep-alive>
+         </transition>
+     </div>
      <v-Bottom></v-Bottom>
    </div>
 </template>
 
 <script>
   import vTop from '../components/Top'
-  import vMiddle from '../components/Middle'
-  import vSeries from '../components/Series'
   import vBottom from '../components/Bottom'
     export default {
         name: "index",
@@ -20,8 +23,6 @@
         },
       components:{
           "v-Top": vTop,
-          "v-Middle": vMiddle,
-          "v-Series": vSeries,
           "v-Bottom": vBottom
       }
     }
