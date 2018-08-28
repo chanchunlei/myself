@@ -2,10 +2,10 @@
   <div class="Top">
       <div class="top_box">
         <ul class="nav">
-          <li><router-link class="size" to="/Home">首页</router-link></li>
-          <li><router-link to="/Codding">coding</router-link></li>
-          <li><router-link to="/Longway">道阻且长</router-link></li>
-          <li><router-link to="/Thinking">受想行识</router-link></li>
+          <li><router-link to="/Home" active-class>首页</router-link></li>
+          <li><router-link to="/Codding" active-class>coding</router-link></li>
+          <li><router-link to="/Longway" active-class>道阻且长</router-link></li>
+          <li><router-link to="/Thinking" active-class>受想行识</router-link></li>
           <li>时间轴</li>
           <li>关于我</li>
         </ul>
@@ -76,8 +76,8 @@ export default {
     li{
       margin: 0 15px;
       cursor: pointer;
-      .size{
-        font-size: 20px;
+      .router-link-exact-active {
+        font-size: 18px;
         color: #999;
       }
     }

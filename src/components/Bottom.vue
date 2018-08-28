@@ -18,6 +18,7 @@
       padding: 10px 0;
       background-color: #fff;
       text-align: center;
+      border-top: 1px solid #eee;
       p{
         font-size: 14px;
         line-height: 30px;

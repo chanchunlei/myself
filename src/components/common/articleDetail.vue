@@ -1,5 +1,7 @@
 <template>
+    <div class="detailBox">
 
+    </div>
 </template>
 
 <script>
@@ -8,6 +10,9 @@
     }
 </script>
 
-<style scoped>
-
+<style scoped lang="less">
+  @import (reference) "../../less/public.less";
+  .detailBox{
+    .content();
+  }
 </style>
