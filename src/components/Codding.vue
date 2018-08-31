@@ -12,7 +12,7 @@
         name: "codding",
       components:{
           "v-nav": vnav,
-          "v-article": vaticle
+          "v-article": vaticle,
       }
     }
 </script>

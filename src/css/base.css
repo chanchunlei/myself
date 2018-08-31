@@ -18,6 +18,10 @@ body {
   height: 100%;
   background-color: #f2f2f2;
   color: #333;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 /* 内外边距通常让各个浏览器样式的表现位置不同 */
 body,

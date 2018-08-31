@@ -47,12 +47,17 @@
         <p class="time">2018-08-28</p>
       </li>
     </ul>
+    <v-paging></v-paging>
   </div>
 </template>
 
 <script>
+  import vpaging from './Paging'
     export default {
-        name: "Article"
+        name: "Article",
+      components:{
+          "v-paging":vpaging
+      }
     }
 </script>
 
@@ -98,12 +103,14 @@
       .indent(@length:2em,@line:3);
       font-size: 14px;
       font-weight: normal;
+      color: #666;
     }
     .time{
       line-height: 35px;
       font-size: 14px;
       text-align: right;
       border-bottom: 1px solid #eee;
+      color: #999;
     }
   }
 </style>
