@@ -20,7 +20,27 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
+    /*
+    *   生产环境解决跨域
+    *   env: require('./dev.env'),
+        port: 8080,
+        autoOpenBrowser: false,
+        assetsSubDirectory: 'static',
+        assetsPublicPath: '/',
+        proxyTable: {
+          '/gp': {
+            target: 'http://mojiu.com/Blog/index/',
+            changeOrigin: true,
+            pathRewrite: {
+              '^/gp': '/'
+            }
+          }
+        },
+    *
+    * */
+
+
     /**
      * Source Maps
      */
@@ -43,7 +63,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: './',
 
     /**
      * Source Maps

@@ -5,7 +5,6 @@ import Home from '../views/index'
 Vue.use(Router)
 
 export default new Router({
-  mode: 'history',//去掉#号
   routes: [
     {
       path: '/',
@@ -13,31 +12,51 @@ export default new Router({
     },
     {
       path: '/',
-      name: 'Home',
-      component: resolve =>require(['../views/index.vue'],resolve),
+      component: resolve =>require(['../views/index.vue'],resolve),//懒加载
       meta: {title: '首页'},
       children:[
         {
           path: '/Home',
-          component: resolve =>require(['../components/Series.vue'],resolve),
+          name: 'Home',
+          component: resolve =>require(['../components/index/Series.vue'],resolve),
           meta: {title:'首页'}
         },
         {
-          path: '/Codding',
-          component: resolve =>require(['../components/Codding.vue'],resolve),
-          meta: {title:'codding'}
+          path: '/Coding',
+          name: 'Coding',
+          component: resolve =>require(['../components/pages/Coding.vue'],resolve),
+          meta: {title:'coding'}
         },
         {
           path: '/Longway',
-          component: resolve => require(['../components/Longway.vue'],resolve),
+          component: resolve => require(['../components/pages/Longway.vue'],resolve),
           meta: {title:'道阻且长'}
         },
         {
           path: '/Thinking',
-          component: resolve => require(['../components/Thinking.vue'],resolve),
+          component: resolve => require(['../components/pages/Thinking.vue'],resolve),
           meta: {title:'受想行识'}
+        },
+        {
+          path: '/Timeline',
+          component: resolve => require(['../components/pages/Timeline.vue'],resolve),
+          meta: {title: '时间轴'}
         }
       ]
+    },
+    {
+      path: '/Aboutme',
+      component: resolve => require(['../views/Aboutme.vue'],resolve),
+      mete: {title: '关于我'}
+    },
+    {
+      path :'/404',
+      component: resolve => require(['../views/404.vue'],resolve),
+      meta: {title: '404'}
+    },
+    {
+      path: '*',
+      redirect: '/404'
     }
 
   ]

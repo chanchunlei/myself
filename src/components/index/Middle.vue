@@ -3,21 +3,9 @@
      <div class="loopImg_box">
        <div class="loopBox">
           <ul class="loopImg">
-            <li class="show">
-              <img src="../../static/imgs/mian.jpg" alt="封面">
-              <div class="title"><p>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</p></div>
-            </li>
-            <li>
-              <img src="../../static/imgs/mian.jpg" alt="封面">
-              <div class="title"><p>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</p></div>
-            </li>
-            <li>
-              <img src="../../static/imgs/mian.jpg" alt="封面">
-              <div class="title"><p>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</p></div>
-            </li>
-            <li>
-              <img src="../../static/imgs/mian.jpg" alt="封面">
-              <div class="title"><p>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</p></div>
+            <li v-for="item in runImg" class="show">
+              <img :src="item.cover" alt="封面">
+              <div class="title"><p>{{item.titles}}</p></div>
             </li>
           </ul>
           <span class="left"><i class="iconfont">&#xe639;</i></span>
@@ -25,34 +13,39 @@
        </div>
      </div>
     <ul class="thumbnail">
-      <li>
-         <img src="../../static/imgs/kong.jpg" alt="封面">
-         <div class="cover"><p>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</p></div>
-      </li>
-      <li>
-        <img src="../../static/imgs/kong.jpg" alt="封面">
-        <div class="cover"><p>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</p></div>
-      </li>
-      <li>
-        <img src="../../static/imgs/kong.jpg" alt="封面">
-        <div class="cover"><p>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</p></div>
-      </li>
-      <li>
-        <img src="../../static/imgs/kong.jpg" alt="封面">
-        <div class="cover"><p>坚持绘画147天,这些意想不到的事情发生了坚持绘画147天,这些意想不到的事情发生了</p></div>
+      <li v-for="item in list">
+         <img :src="item.cover" alt="封面">
+         <div class="cover"><p>{{item.titles}}</p></div>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+  import api from '../../api/api'
     export default {
-        name: "Middle"
+        name: "Middle",
+      data(){
+          return{
+            runImg:[],
+            list:[]
+          }
+      },
+      created(){
+        api.Banner({
+          success:function(res){
+            //console.log(res)
+            if(res.status == 200){}
+            this.runImg = res.data.runImg;
+            this.list = res.data.right;
+          }.bind(this)
+        })
+      }
     }
 </script>
 
 <style scoped lang="less">
-  @import (reference) "../less/public.less";
+  @import (reference) "../../less/public.less";
    .middleImg{
      .content();
      margin-top: 40px;

@@ -1,17 +1,13 @@
 <template>
-   <div class="thinking">
-     <v-nav></v-nav>
+   <div class="longWay">
      <v-article></v-article>
    </div>
 </template>
-
 <script>
-  import vnav from './common/Nav'
-  import vaticle from './common/Article'
+  import vaticle from '../common/Article'
     export default {
-        name: "Thinking",
+        name: "Longway",
       components:{
-        "v-nav": vnav,
         "v-article": vaticle
       }
     }

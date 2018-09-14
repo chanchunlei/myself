@@ -13,8 +13,10 @@ export default {
 <style lang="less" type="text/less">
   @import "css/base.css";
   @import "less/public.less";
-
-
+  #app{
+    width: 100%;
+    height: 100%;
+  }
   @font-face {
     font-family: 'iconfont';  /* project id 783661 */
     src: url('//at.alicdn.com/t/font_783661_i3g8md801en.eot');

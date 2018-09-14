@@ -1,7 +1,10 @@
 <template>
   <div class="thumbnail">
+    <div class="navBox">
+      <div class="listNav" v-for="(item,index) in list" :key="index">{{item.title}}</div>
+    </div>
     <div class="titleH3">
-      前端插件
+      前端插件{{classify}}
     </div>
     <ul class="listBox">
       <li>
@@ -53,10 +56,40 @@
 
 <script>
   import vpaging from './Paging'
+  import api from '../../api/api'
     export default {
         name: "Article",
       components:{
           "v-paging":vpaging
+      },
+      data(){
+          return{
+            list: [
+              {id:1,title:"前端插件"},
+              {id:2,title:"小程序"},
+              {id:3,title:"前端框架"},
+              {id:4,title:"canvas"}]
+          }
+      },
+      created(){
+         api.classify({
+           success:function(res){
+             //console.log(res);
+             if(res.status == 200){
+               this.list = res.data.nav
+             }
+           }.bind(this)
+         })
+      },
+      computed:{
+         classify(){
+           return this.$store.state.classifyId;
+         }
+      },
+      watch:{
+         classify(val){
+           console.log(this.classify);
+         }
       }
     }
 </script>
@@ -111,6 +144,19 @@
       text-align: right;
       border-bottom: 1px solid #eee;
       color: #999;
+    }
+  }
+  .navBox{
+    .content();
+    width: 100%;
+    background-color: #f2f2f2;
+    text-align: center;
+    .listNav{
+      display: inline-block;
+      padding: 5px 15px;
+      line-height: 25px;
+      color: #666;
+      cursor: pointer;
     }
   }
 </style>

@@ -1,18 +1,18 @@
 <template>
-  <div class="coddingBox">
-     <v-nav></v-nav>
+  <div class="codingBox">
      <v-article></v-article>
   </div>
 </template>
 
 <script>
-  import vnav from './common/Nav'
-  import vaticle from './common/Article'
+  import vaticle from '../common/Article'
     export default {
         name: "codding",
       components:{
-          "v-nav": vnav,
-          "v-article": vaticle,
+          "v-article": vaticle
+      },
+      created(){
+          //console.log(this.$route.params)
       }
     }
 </script>
