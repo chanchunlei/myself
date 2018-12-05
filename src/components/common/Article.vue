@@ -1,62 +1,27 @@
 <template>
   <div class="thumbnail">
     <div class="navBox">
-      <div class="listNav" v-for="(item,index) in list" :key="index">{{item.title}}</div>
+      <div class="listNav" v-for="(item,index) in list" @click="changeSub(item.subClassifyId,index)" :key="index">{{item.title}}</div>
     </div>
     <div class="titleH3">
-      前端插件{{classify}}
+      {{titles}}
     </div>
     <ul class="listBox">
-      <li>
-        <div class="cover"><img src="../../../static/imgs/kong.jpg" alt=""></div>
-        <p class="title">长大不过如此，沉迷过的偶像一个个消失</p>
-        <p class="contents">面对朋友圈忽然兴起的潮流、忽然疯转的事件，又忽然有新的事物将其取代、或是忽然一切沉寂如止水，我们甚至没留给自己多余的时间平静与思考。谁都不过被爆炸的资讯拥簇着、撕裂着，也不痛不痒。几乎所有思想趋于单向度。</p>
-        <p class="time">2018-08-28</p>
-      </li>
-      <li>
-        <div class="cover"><img src="../../../static/imgs/kong.jpg" alt=""></div>
-        <p class="title">长大不过如此，沉迷过的偶像一个个消失</p>
-        <p class="contents">面对朋友圈忽然兴起的潮流、忽然疯转的事件，又忽然有新的事物将其取代、或是忽然一切沉寂如止水，我们甚至没留给自己多余的时间平静与思考。谁都不过被爆炸的资讯拥簇着、撕裂着，也不痛不痒。几乎所有思想趋于单向度。</p>
-        <p class="time">2018-08-28</p>
-      </li>
-      <li>
-        <div class="cover"><img src="../../../static/imgs/kong.jpg" alt=""></div>
-        <p class="title">长大不过如此，沉迷过的偶像一个个消失</p>
-        <p class="contents">面对朋友圈忽然兴起的潮流、忽然疯转的事件，又忽然有新的事物将其取代、或是忽然一切沉寂如止水，我们甚至没留给自己多余的时间平静与思考。谁都不过被爆炸的资讯拥簇着、撕裂着，也不痛不痒。几乎所有思想趋于单向度。</p>
-        <p class="time">2018-08-28</p>
-      </li>
-      <li>
-        <div class="cover"><img src="../../../static/imgs/kong.jpg" alt=""></div>
-        <p class="title">长大不过如此，沉迷过的偶像一个个消失</p>
-        <p class="contents">面对朋友圈忽然兴起的潮流、忽然疯转的事件，又忽然有新的事物将其取代、或是忽然一切沉寂如止水，我们甚至没留给自己多余的时间平静与思考。谁都不过被爆炸的资讯拥簇着、撕裂着，也不痛不痒。几乎所有思想趋于单向度。</p>
-        <p class="time">2018-08-28</p>
-      </li>
-      <li>
-        <div class="cover"><img src="../../../static/imgs/kong.jpg" alt=""></div>
-        <p class="title">长大不过如此，沉迷过的偶像一个个消失</p>
-        <p class="contents">面对朋友圈忽然兴起的潮流、忽然疯转的事件，又忽然有新的事物将其取代、或是忽然一切沉寂如止水，我们甚至没留给自己多余的时间平静与思考。谁都不过被爆炸的资讯拥簇着、撕裂着，也不痛不痒。几乎所有思想趋于单向度。</p>
-        <p class="time">2018-08-28</p>
-      </li>
-      <li>
-        <div class="cover"><img src="../../../static/imgs/kong.jpg" alt=""></div>
-        <p class="title">长大不过如此，沉迷过的偶像一个个消失</p>
-        <p class="contents">面对朋友圈忽然兴起的潮流、忽然疯转的事件，又忽然有新的事物将其取代、或是忽然一切沉寂如止水，我们甚至没留给自己多余的时间平静与思考。谁都不过被爆炸的资讯拥簇着、撕裂着，也不痛不痒。几乎所有思想趋于单向度。</p>
-        <p class="time">2018-08-28</p>
-      </li>
-      <li>
-        <div class="cover"><img src="../../../static/imgs/kong.jpg" alt=""></div>
-        <p class="title">长大不过如此，沉迷过的偶像一个个消失</p>
-        <p class="contents">面对朋友圈忽然兴起的潮流、忽然疯转的事件，又忽然有新的事物将其取代、或是忽然一切沉寂如止水，我们甚至没留给自己多余的时间平静与思考。谁都不过被爆炸的资讯拥簇着、撕裂着，也不痛不痒。几乎所有思想趋于单向度。</p>
-        <p class="time">2018-08-28</p>
+      <li v-for="item in conent" @click="runDetail(item.articleId)">
+        <div class="cover"><img :src="item.cover" alt=""></div>
+        <p class="title">{{item.title}}</p>
+        <p class="contents">{{filterHTMLTag(item.content)}}</p>
+        <p class="time">{{item.time}}</p>
       </li>
     </ul>
-    <v-paging></v-paging>
+    <v-paging v-show="this.$store.state.paping"></v-paging>
   </div>
 </template>
 
 <script>
   import vpaging from './Paging'
   import api from '../../api/api'
+  import { mapState } from 'vuex'
     export default {
         name: "Article",
       components:{
@@ -64,38 +29,100 @@
       },
       data(){
           return{
-            list: [
-              {id:1,title:"前端插件"},
-              {id:2,title:"小程序"},
-              {id:3,title:"前端框架"},
-              {id:4,title:"canvas"}]
+            list: [],
+            conent:[],
+            titles:'',
+            pageAll: 0,
           }
       },
-      created(){
-         api.classify({
-           success:function(res){
-             //console.log(res);
-             if(res.status == 200){
-               this.list = res.data.nav
-             }
-           }.bind(this)
-         })
+      mounted(){
+          const that = this;
+          that.getData(that.classify);
       },
-      computed:{
-         classify(){
-           return this.$store.state.classifyId;
-         }
+
+      methods:{
+        getData:function(classifyId){//初次数据
+          api.classify({
+            query:{
+              classifyId:classifyId
+            },
+            success:function(res){
+              //console.log(res.data);
+              if(res.status == 200){
+                this.list = res.data.nav;
+                this.conent = res.data.conent;
+                this.titles = this.conent[0].titles;
+                this.pageAll = res.data.pageAll;
+                this.$store.commit('subClassifyId',this.conent[0].subClassifyId);
+                this.$store.commit('pageAll',res.data.pageAll);
+              }
+            }.bind(this)
+          })
+        },
+        changeSub(sub,index){//小分类
+          this.$store.commit('subClassifyId',sub);
+          this.titles = this.list[index].title;
+          api.classifyPage({
+            query:{
+              pageNow: 1,
+              subClassifyId: sub
+            },
+            success:function(res){
+              //console.log(res);
+              if(res.status==200){
+                this.conent = res.data.conent;
+                this.pageAll = res.data.pageAll;
+                this.$store.commit('pageAll',res.data.pageAll);
+              }
+            }.bind(this)
+          })
+        },
+        runDetail:function(articleId){//去详情页
+          const article = localStorage.setItem('myArticle',articleId);
+          this.$router.push('/Article');
+        },
+        filterHTMLTag:function (msg) {
+          let str = msg.replace(/<\/?[^>]*>/g, ''); //去除HTML Tag
+          str = str.replace(/[|]*\n/, '') //去除行尾空格
+          str = str.replace(/&npsp;/ig, ''); //去掉npsp
+          return str;
+        },
       },
+      updated(){
+        if(this.pageAll<=1){
+          this.isShow = false;
+        }else{
+          this.isShow = true;
+        }
+
+      },
+      computed: mapState({
+        classify: state => state.classifyId,
+        subClassifyId: state => state.subClassifyId,
+        pageNow: state => state.pageNow,
+        paping: state => state.paping
+      }),
       watch:{
-         classify(val){
-           console.log(this.classify);
-         }
+          pageNow(val){
+            api.classifyPage({
+              query:{
+                pageNow: val,
+                subClassifyId: this.subClassifyId
+              },
+              success:function(res){
+                //console.log(res);
+                if(res.status==200){
+                  this.conent = res.data.conent;
+                }
+              }.bind(this)
+            })
+        }
       }
     }
 </script>
 
 <style scoped lang="less">
-  @import (reference) "../../less/public.less";
+  @import (reference) "../../assets/less/public.less";
   .thumbnail{
     .box();
     .titleH3{

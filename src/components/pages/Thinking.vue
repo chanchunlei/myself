@@ -10,6 +10,9 @@
         name: "Thinking",
       components:{
         "v-article": vaticle
+      },
+      created(){
+        this.$store.commit('classify',4);
       }
     }
 </script>

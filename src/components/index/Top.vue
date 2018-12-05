@@ -2,8 +2,8 @@
   <div class="Top">
     <div class="top_box">
       <ul class="nav">
-        <li v-for="item in list" @click="RunPath(item.classify)" :key="item.classify">
-          <router-link :to="item.path" active-class>{{item.navName}}</router-link>
+        <li v-for="item in list" :key="item.classify">
+          <router-link @click.native="RunPath(item.classify)" :to="item.path" :data-classify="item.classify" active-class>{{item.navName}}</router-link>
         </li>
       </ul>
       <div class="search">
@@ -21,7 +21,6 @@
 
 <script>
   import api from '../../api/api.js'
-
   export default {
     name: "Top",
     data() {
@@ -52,15 +51,16 @@
         this.isShow = !this.isShow;
       },
       RunPath: function (classify) {
-        this.$store.commit('CLASSIFY',classify);
-      }
-    }
+        this.$store.commit('classify',classify);
+      },
+    },
+
   }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="less">
-  @import (reference) "../../less/public.less";
+  @import (reference) "../../assets/less/public.less";
 
   .Top {
     .box();

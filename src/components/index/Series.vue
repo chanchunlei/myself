@@ -17,7 +17,7 @@
               <div class="title_cover">
                 <img :src="item.cover">
                 <p>{{item.title}}</p>
-                <div class="synopsis">
+                <div class="synopsis" @click="runDetail(item.articleId)">
                   <span>{{filterHTMLTag(item.content)}}</span>
                   <div class="read_all">阅读全文>></div>
                 </div>
@@ -81,6 +81,10 @@
             this.loading = false;
           }
         },
+        runDetail:function(articleId){//去详情页
+          const article = localStorage.setItem('myArticle',articleId);
+          this.$router.push('/Article');
+        },
         filterHTMLTag:function (msg) {
           let str = msg.replace(/<\/?[^>]*>/g, ''); //去除HTML Tag
           str = str.replace(/[|]*\n/, '') //去除行尾空格
@@ -99,7 +103,7 @@
 </script>
 
 <style scoped lang="less">
-  @import (reference) "../../less/public.less";
+  @import (reference) "../../assets/less/public.less";
   .homologous(){
     width: calc(50% + 100px);
     height: 120px;
@@ -266,6 +270,7 @@
       box-sizing: border-box;
       color: #999;
       font-size: 16px;
+      cursor: pointer;
       span{
         .indent(2em,10);
       }

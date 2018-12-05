@@ -5,7 +5,11 @@ import actions from './action'
 Vue.use(Vuex);
 const state = {
     loading: true,
-    classifyId: 1
+    classifyId: 1,
+    pageAll: 10,
+    pageNow:1,
+    subClassifyId: 1,
+    paping: false
 }
 
 export default new Vuex.Store({ //插件输出

@@ -11,19 +11,19 @@ export default {
 </script>
 
 <style lang="less" type="text/less">
-  @import "css/base.css";
-  @import "less/public.less";
+  @import "assets/css/base.css";
+  @import "assets/less/public.less";
   #app{
     width: 100%;
     height: 100%;
   }
   @font-face {
     font-family: 'iconfont';  /* project id 783661 */
-    src: url('//at.alicdn.com/t/font_783661_i3g8md801en.eot');
-    src: url('//at.alicdn.com/t/font_783661_i3g8md801en.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_783661_i3g8md801en.woff') format('woff'),
-    url('//at.alicdn.com/t/font_783661_i3g8md801en.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_783661_i3g8md801en.svg#iconfont') format('svg');
+    src: url('//at.alicdn.com/t/font_783661_6on029r06kl.eot');
+    src: url('//at.alicdn.com/t/font_783661_6on029r06kl.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_783661_6on029r06kl.woff') format('woff'),
+    url('//at.alicdn.com/t/font_783661_6on029r06kl.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_783661_6on029r06kl.svg#iconfont') format('svg');
   }
   .iconfont{
     font-family:"iconfont" !important;

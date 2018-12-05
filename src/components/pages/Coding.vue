@@ -12,7 +12,7 @@
           "v-article": vaticle
       },
       created(){
-          //console.log(this.$route.params)
+        this.$store.commit('classify',2);
       }
     }
 </script>

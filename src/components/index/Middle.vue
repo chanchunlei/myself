@@ -3,7 +3,7 @@
      <div class="loopImg_box">
        <div class="loopBox">
           <ul class="loopImg">
-            <li v-for="item in runImg" class="show">
+            <li v-for="item in runImg" class="show" @click="runDetail(item.articleId)">
               <img :src="item.cover" alt="封面">
               <div class="title"><p>{{item.titles}}</p></div>
             </li>
@@ -13,7 +13,7 @@
        </div>
      </div>
     <ul class="thumbnail">
-      <li v-for="item in list">
+      <li v-for="item in list" @click="runDetail(item.articleId)">
          <img :src="item.cover" alt="封面">
          <div class="cover"><p>{{item.titles}}</p></div>
       </li>
@@ -40,12 +40,18 @@
             this.list = res.data.right;
           }.bind(this)
         })
+      },
+      methods:{
+        runDetail:function(articleId){//去详情页
+          const article = localStorage.setItem('myArticle',articleId);
+          this.$router.push('/Article');
+        },
       }
     }
 </script>
 
 <style scoped lang="less">
-  @import (reference) "../../less/public.less";
+  @import (reference) "../../assets/less/public.less";
    .middleImg{
      .content();
      margin-top: 40px;
@@ -113,6 +119,7 @@
     .show{
       z-index: 10;
       opacity: 1;
+      cursor: pointer;
     }
   }
   .title{
@@ -140,6 +147,7 @@
       height: 275px;
       overflow: hidden;
       position: relative;
+      cursor: pointer;
       img{
         width: 275px;
         height: 275px;

@@ -9,6 +9,9 @@
         name: "Longway",
       components:{
         "v-article": vaticle
+      },
+      created(){
+        this.$store.commit('classify',3);
       }
     }
 </script>

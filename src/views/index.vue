@@ -4,9 +4,7 @@
      <v-Top></v-Top>
      <div class="bodyBox">
          <transition name="change" mode="out-in">
-           <keep-alive>
              <router-view></router-view>
-           </keep-alive>
          </transition>
      </div>
      <v-Bottom></v-Bottom>
@@ -30,9 +28,7 @@
           "v-Loading": vLoading
       },
       mounted(){
-         this.loading = this.$store.state.loading;
-         console.log(this.$store.state)
-         console.log(this.$store.state.loading)
+         //console.log(this.$store.state.loading)
       }
     }
 </script>

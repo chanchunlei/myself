@@ -1,12 +1,12 @@
 import axios from 'axios'
-const url = 'http://mojiu.com/Blog/index/'
+const url = 'https://ccl.art-framework.com/Blog/index'
 let request = (params,url) => {
   axios({
     method: 'post',
     url: url,
     data:params.query || {},
     headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
+      'Content-Type': 'application/json'
     }
   })
     .then(function(res){
@@ -28,11 +28,19 @@ const indexPage = params => {
   request(params,url+'/paping')
 }
 const classify = params => {
-  request(params,url+'classify')
+  request(params,url+'/classify')
+}
+const classifyPage = params => {
+  request(params,url+'/classifyPage')
+}
+const article = params => {
+  request(params,url+'/article')
 }
 export default{
   Top,
   Banner,
   indexPage,
-  classify
+  classify,
+  classifyPage,
+  article
 }

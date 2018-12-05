@@ -4,7 +4,7 @@
     <div @click="prev">&laquo;</div>
     <ul>
       <li v-if="showI">...</li>
-      <li v-for="item in Pages" @click="go(item)" :class="nowPage==item?'active':''">{{item}}</li>
+      <li v-for="item in arr" @click="go(item)" :class="nowPage==item?'active':''">{{item}}</li>
       <li v-if="showII">...</li>
     </ul>
     <div @click="next">&raquo;</div>
@@ -13,31 +13,42 @@
 </template>
 
 <script>
+  import { mapState } from 'vuex'
     export default {
         name: "Paging",
       data(){
           return{
             showI: true,
             showII: true,
-            total: 15,
-            showPage: 7,
-            nowPage: 2,
-            index: 2,
+            total: 5,
+            showPage: 5,
+            nowPage: 1,
             arr:[]
         }
       },
+      created(){
+        this.Pages(this.total);
+      },
       computed:{//计算属性
-        Pages:function(){
-          if(this.showPage > this.total){//如果要显示的页码大于总页码
-            this.showPage = this.total;
+
+        ...mapState({
+          pageAll: state => state.pageAll,
+        }),
+      },
+      methods:{//不要在选项属性或回调上使用箭头函数
+        Pages:function(total){
+          this.showPage = 5;//默认显示几页
+          if(this.showPage > total){//如果要显示的页码大于总页码
+            this.showPage = total;
           }
+          //console.log(this.showPage);
           let arr = [];
           let start = this.nowPage;
           const middleNum = Math.floor(this.showPage/2);
           if(this.nowPage <= middleNum){//判断开始显示的页码
             start = 1;
-          }else if(this.nowPage+middleNum > this.total){//判断是否是最后的页码
-            start = this.total - this.showPage + 1;
+          }else if(this.nowPage+middleNum > total){//判断是否是最后的页码
+            start = total - this.showPage + 1;
           }else{
             start = this.nowPage - middleNum;
           }
@@ -46,7 +57,7 @@
           }else{
             this.showI = true;
           }
-          if(start+this.showPage<=this.total){//判断后面的省略
+          if(start+this.showPage<=total){//判断后面的省略
             this.showII = true;
           }else{
             this.showII = false;
@@ -54,10 +65,9 @@
           for(let i=start;i<start+this.showPage; i++){
             arr.push(i);
           }
-          return arr;
-        }
-      },
-      methods:{//不要在选项属性或回调上使用箭头函数
+          //this.first();
+          this.arr = arr;
+        },
         first:function (){//首页
           this.nowPage = 1;
         },
@@ -79,12 +89,29 @@
         }
       },
       watch:{
+        pageAll(val){
+          console.log(val);
+          this.total = val;
+          if(val>1){
+            this.$store.commit('paping',true);
+          }else{
+            this.$store.commit('paping',false);
+          }
+          this.Pages(val);
+        },
+        nowPage(val){
+          this.$store.commit('pageNow',val)
+        }
+      },
+      beforeDestroy(){//销毁前隐藏分页
+       this.$store.commit('paping',false);
+        this.$store.commit('pageAll',1);
       }
     }
 </script>
 
 <style scoped lang="less">
-  @import (reference) "../../less/public.less";
+  @import (reference) "../../assets/less/public.less";
    .paging{
      .content();
      text-align: center;

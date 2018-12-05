@@ -11,7 +11,7 @@
 </script>
 
 <style scoped lang="less">
-  @import (reference) "../../less/public.less";
+  @import (reference) "../../assets/less/public.less";
   .detailBox{
     .content();
   }

@@ -41,6 +41,11 @@ export default new Router({
           path: '/Timeline',
           component: resolve => require(['../components/pages/Timeline.vue'],resolve),
           meta: {title: '时间轴'}
+        },
+        {
+          path: '/Article',
+          component: resolve => require(['../components/pages/ArticleDetail.vue'],resolve),
+          meta: {title: '正文'}
         }
       ]
     },
@@ -54,7 +59,7 @@ export default new Router({
       component: resolve => require(['../views/404.vue'],resolve),
       meta: {title: '404'}
     },
-    {
+    {//参数不对时自动去404
       path: '*',
       redirect: '/404'
     }
